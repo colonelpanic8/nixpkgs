@@ -25,6 +25,7 @@ done
     '';
 in stdenv.mkDerivation (args // {
 
+  strictDeps = true;
   buildInputs =
     buildInputs ++
     optional stdenv.isLinux glibcLocales ++
