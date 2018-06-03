@@ -242,6 +242,7 @@ stdenv.mkDerivation ({
 
   inherit src;
 
+  strictDeps = true;
   inherit nativeBuildInputs;
   buildInputs = otherBuildInputs ++ optionals (!hasActiveLibrary) propagatedBuildInputs;
   propagatedBuildInputs = optionals hasActiveLibrary propagatedBuildInputs;
