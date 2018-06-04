@@ -18,8 +18,10 @@ let stackCmd = "stack --internal-re-exec-version=${stack.version}";
 for pkg in ''${pkgsHostHost[@]} ''${pkgsHostBuild[@]} ''${pkgsHostTarget[@]}
 do
   [ -d "$pkg/lib" ] && \
+    [[ "$STACK_IN_NIX_EXTRA_ARGS" =~ "--extra-lib-dirs=$pkg/lib" ]] || \
     export STACK_IN_NIX_EXTRA_ARGS+=" --extra-lib-dirs=$pkg/lib"
   [ -d "$pkg/include" ] && \
+    [[ "$STACK_IN_NIX_EXTRA_ARGS" =~ "--extra-include-dirs=$pkg/include" ]] || \
     export STACK_IN_NIX_EXTRA_ARGS+=" --extra-include-dirs=$pkg/include"
 done
     '';
