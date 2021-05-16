@@ -237,6 +237,14 @@ package-maintainers:
     - taffybar
     - arbtt
     - lentil
+  ivanmalison:
+    - dbus-hslogger
+    - gtk-sni-tray
+    - gtk-strut
+    - notifications-tray-icon
+    - status-notifier-item
+    - taffybar
+    - xdg-desktop-entry
 
 unsupported-platforms:
   Allure:                                       [ x86_64-darwin ]
