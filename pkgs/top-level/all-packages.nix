@@ -21132,6 +21132,8 @@ in
 
     rtw89 = callPackage ../os-specific/linux/rtw89 { };
 
+	soundwire-dkms = callPackage ../os-specific/linux/firmware/soundwire-dkms { };
+
     openafs_1_8 = callPackage ../servers/openafs/1.8/module.nix { };
     openafs_1_9 = callPackage ../servers/openafs/1.9/module.nix { };
     # Current stable release; don't backport release updates!
