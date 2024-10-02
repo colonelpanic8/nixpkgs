@@ -62,6 +62,13 @@
           the container runtime.
         '';
       };
+      cdi-class = lib.mkOption {
+        default = "gpu";
+        type = lib.types.str;
+        description = ''
+          Specify the class that should be used.
+        '';
+      };
 
       mount-nvidia-docker-1-directories = lib.mkOption {
         default = true;
@@ -134,6 +141,7 @@
               nvidia-container-toolkit = config.hardware.nvidia-container-toolkit.package;
               nvidia-driver = config.hardware.nvidia.package;
               deviceNameStrategy = config.hardware.nvidia-container-toolkit.device-name-strategy;
+              cdi-class = config.hardware.nvidia-container-toolkit.cdi-class;
             };
           in
           lib.getExe script;
