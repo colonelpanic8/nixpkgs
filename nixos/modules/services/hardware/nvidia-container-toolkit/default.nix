@@ -97,6 +97,11 @@
             /usr/local/nvidia/lib64.
           '';
         };
+        additionalEdit = lib.mkOption {
+          default = "cat";
+          type = lib.types.str;
+          description = '' '';
+        };
 
         package = lib.mkPackageOption pkgs "nvidia-container-toolkit" { };
       };
@@ -213,6 +218,7 @@
               nvidia-container-toolkit = config.hardware.nvidia-container-toolkit.package;
               nvidia-driver = config.hardware.nvidia.package;
               deviceNameStrategy = config.hardware.nvidia-container-toolkit.device-name-strategy;
+              additionalEdit = config.hardware.nvidia-container-toolkit.additionalEdit;
             };
           in
           lib.getExe script;
