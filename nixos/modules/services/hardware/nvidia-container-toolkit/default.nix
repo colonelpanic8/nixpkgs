@@ -74,7 +74,7 @@
 
       package = lib.mkPackageOption pkgs "nvidia-container-toolkit" { };
       additionalEdit = lib.mkOption {
-        default = "${lib.getExe' pkgs.coreutils "cat"}";
+        default = "cat";
         type = lib.types.str;
         description = '' '';
       };
