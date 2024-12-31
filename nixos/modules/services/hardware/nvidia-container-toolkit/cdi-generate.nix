@@ -8,6 +8,7 @@
   nvidia-driver,
   runtimeShell,
   writeScriptBin,
+  additionalEdit,
 }:
 let
   mkMount =
@@ -55,5 +56,5 @@ writeScriptBin "nvidia-cdi-generator" ''
   }
 
   cdiGenerate |
-    ${mountsToCommands mounts} > $RUNTIME_DIRECTORY/nvidia-container-toolkit.json
+  ${mountsToCommands mounts} | ${additionalEdit} > $RUNTIME_DIRECTORY/nvidia-container-toolkit.json
 ''
