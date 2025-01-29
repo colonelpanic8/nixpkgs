@@ -75,7 +75,6 @@ in
         TemporaryFileSystem = "/";
         # Allowlist /nix/store (to allow the binary to find its dependencies)
         # and dbus.
-        ReadOnlyPaths = "/nix/store /run/dbus";
         # Let systemd manage `/var/lib/matter-server` for us inside the
         # ephemeral TemporaryFileSystem.
         StateDirectory = storageDir;
@@ -84,51 +83,6 @@ in
         # /var/lib/matter-server, so all files get dropped into the state
         # directory.
         BindPaths = "${storagePath}:/data";
-
-        # Hardening bits
-        AmbientCapabilities = "";
-        CapabilityBoundingSet = "";
-        DevicePolicy = "closed";
-        DynamicUser = true;
-        LockPersonality = true;
-        MemoryDenyWriteExecute = true;
-        NoNewPrivileges = true;
-        PrivateDevices = true;
-        PrivateTmp = true;
-        PrivateUsers = true;
-        ProcSubset = "pid";
-        ProtectClock = true;
-        ProtectControlGroups = true;
-        ProtectHome = true;
-        ProtectHostname = true;
-        ProtectKernelLogs = true;
-        ProtectKernelModules = true;
-        ProtectKernelTunables = true;
-        ProtectProc = "invisible";
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-          "AF_NETLINK"
-          "AF_UNIX"
-        ];
-        RestrictNamespaces = true;
-        RestrictRealtime = true;
-        RestrictSUIDSGID = true;
-        SystemCallFilter = lib.concatStringsSep " " [
-          "~" # Blocklist
-          "@clock"
-          "@cpu-emulation"
-          "@debug"
-          "@module"
-          "@mount"
-          "@obsolete"
-          "@privileged"
-          "@raw-io"
-          "@reboot"
-          "@resources"
-          "@swap"
-        ];
-        UMask = "0077";
       };
     };
   };
