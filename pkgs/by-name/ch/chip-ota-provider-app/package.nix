@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Chip OTA Provider App for x86_64 architectures";
     homepage = "https://github.com/home-assistant-libs/matter-linux-ota-provider";
-    license = lib.licenses.maintainers;
+    license = lib.licenses.asl20;
     maintainers = [ lib.maintainers.imalison ];
     platforms = [ "x86_64-linux" ];
   };
