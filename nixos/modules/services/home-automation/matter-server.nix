@@ -55,13 +55,10 @@ in
       wantedBy = [ "multi-user.target" ];
       description = "Matter Server";
 
+      path = [ pkgs.chip-ota-provider-app ];
+
       environment = {
         HOME = storagePath;
-        PATH = lib.makeBinPath [
-          pkgs.chip-ota-provider-app
-          cfg.package
-          pkgs.coreutils
-        ];
       };
 
       serviceConfig = {
