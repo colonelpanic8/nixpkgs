@@ -54,7 +54,16 @@ in
       wants = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
       description = "Matter Server";
-      environment.HOME = storagePath;
+
+      environment = {
+        HOME = storagePath;
+        PATH = lib.makeBinPath [
+          pkgs.chip-ota-provider-app
+          cfg.package
+          pkgs.coreutils
+        ];
+      };
+
       serviceConfig = {
         ExecStart = (
           lib.concatStringsSep " " [
