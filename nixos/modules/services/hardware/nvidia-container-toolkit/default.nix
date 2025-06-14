@@ -120,6 +120,12 @@
         };
 
         package = lib.mkPackageOption pkgs "nvidia-container-toolkit" { };
+
+        additionalEdit = lib.mkOption {
+          default = "cat";
+          type = lib.types.str;
+          description = '' '';
+        };
       };
 
     };
@@ -244,6 +250,7 @@
                 ;
               nvidia-container-toolkit = config.hardware.nvidia-container-toolkit.package;
               nvidia-driver = config.hardware.nvidia.package;
+              additionalEdit = config.hardware.nvidia-container-toolkit.additionalEdit;
             };
           in
           lib.getExe script;
