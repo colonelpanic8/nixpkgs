@@ -3336,12 +3336,6 @@ with haskellLib;
   gi-gtk-hs =
     appendPatches
       [
-        (pkgs.fetchpatch {
-          name = "gi-gtk-hs-use-gtk3.patch";
-          url = "https://github.com/haskell-gi/haskell-gi/commit/e2ed85835499f70e119f050a2f37f22481f93886.patch";
-          sha256 = "sha256-MzxXtBNBbJJaNwTOrq/CYqK4yGfS4Yk5fQ38ihFcclA=";
-          relative = "gi-gtk-hs";
-        })
       ]
       (
         super.gi-gtk-hs.override {
